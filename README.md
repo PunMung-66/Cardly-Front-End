@@ -1,12 +1,50 @@
-# React + Vite
+# Cardly - Flashcard Web App ✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cardly is a simple and efficient flashcard web app designed to help you **save time and boost your memory** for educational content. Whether you're studying for exams, revising key concepts, or learning a new topic, Cardly makes it easier to create, review, and organize your flashcards — all in one place.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** – For building a fast and interactive UI  
+- **Vite** – For lightning-fast development and build performance  
+- **Tailwind CSS** – For modern, utility-first styling  
+- **Yarn** – Preferred package manager for this project  
 
-## Expanding the ESLint configuration
+## 🔗 Clone This Repository
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/PunMung-66/Cardly-Front-End.git
+cd Cardly-Front-End
+```
+
+### 📦 Install Dependencies
+
+Make sure you have **Yarn** installed. Then run:
+
+```bash
+yarn
+```
+
+### ▶️ Start the Development Server
+
+```bash
+yarn dev
+```
+
+### 💾 For installing the Library
+
+```bash
+yarn add <dependencies> (Commom use)
+yarn add -D <dependencies> (For dev mode)
+```
+
+## 🎯 Features
+
+- Create, edit, and delete flashcards easily  
+- Organize flashcards by topics or subjects  
+- Responsive, modern UI with Tailwind CSS  
+- Built to support **active recall** and **spaced repetition** techniques  
+
+## 📌 Why Cardly?
+
+Cardly was built with one goal in mind — to help learners **remember educational content faster** and more efficiently using flashcards. Instead of wasting time re-reading, use flashcards to practice smarter!
+
