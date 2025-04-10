@@ -1,7 +1,7 @@
 import React from 'react'
-import Container from '../components/Container'
-import CardList from '../components/Cardcomponent/CardList'
-import Searchbar from '../components/Searchbar'
+import Container from '../../components/Container'
+import CardList from '../../components/Cardcomponent/CardList'
+import Searchbar from '../../components/Searchbar'
 
 const cardData = [
     {

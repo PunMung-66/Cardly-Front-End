@@ -1,6 +1,6 @@
 import React from 'react'
-import Container from '../components/Container'
-import CardList from '../components/Cardcomponent/CardList'
+import Container from '../../components/Container'
+import CardList from '../../components/Cardcomponent/CardList'
 
 const cardData = [
     {

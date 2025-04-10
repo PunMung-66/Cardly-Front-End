@@ -25,7 +25,7 @@ export default function Login() {
                 return
             } else if (data) {
                 setMessage('Login success!')
-                navigate('/page')
+                navigate('/dashboard')
                 return null
             }
 

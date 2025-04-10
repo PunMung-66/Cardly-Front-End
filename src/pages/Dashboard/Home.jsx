@@ -1,9 +1,8 @@
 import React from 'react'
-import CardList from '../components/Cardcomponent/CardList'
-import Searchbar from '../components/Searchbar'
-import RecentCardList from '../components/Cardcomponent/RecentCardList'
-import Container from '../components/Container'
-
+import CardList from '../../components/Cardcomponent/CardList'
+import Searchbar from '../../components/Searchbar'
+import RecentCardList from '../../components/Cardcomponent/RecentCardList'
+import Container from '../../components/Container'
 
 const cardData = [
     {
@@ -39,7 +38,6 @@ const cardData = [
 ]
 
 export default function Home() {
-
     return (
         <div className=" flex flex-col items-center gap-10 bg-[#B3EBF2] ">
             {/* Search Bar */}
@@ -63,9 +61,7 @@ export default function Home() {
                 icon="fa-solid fa-fire"
                 icon_color="text-red-500"
             >
-                <CardList
-                    cardData={cardData}
-                />
+                <CardList cardData={cardData} />
             </Container>
         </div>
     )
