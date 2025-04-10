@@ -48,6 +48,3 @@ yarn add -D <dependencies> (For dev mode)
 
 Cardly was built with one goal in mind — to help learners **remember educational content faster** and more efficiently using flashcards. Instead of wasting time re-reading, use flashcards to practice smarter!
 
----
-
-Want to include deployment instructions (e.g., for Vercel or Netlify)? Just let me know!
