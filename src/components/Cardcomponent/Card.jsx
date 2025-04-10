@@ -46,7 +46,7 @@ const Card = ({
             front={front}
             back={back}
             flipOn="hover"
-            set_style=" w-[22rem] h-36 flex-shrink-0"
+            set_style=" w-96 h-36 flex-shrink-0"
         />
     )
 }
