@@ -1,7 +1,3 @@
-Perfect! Here's your updated `README.md` that mentions you're using **Yarn** instead of npm, and includes instructions for others to use Yarn when installing dependencies and running the project.
-
----
-
 # Cardly - Flashcard Web App ✨
 
 Cardly is a simple and efficient flashcard web app designed to help you **save time and boost your memory** for educational content. Whether you're studying for exams, revising key concepts, or learning a new topic, Cardly makes it easier to create, review, and organize your flashcards — all in one place.
