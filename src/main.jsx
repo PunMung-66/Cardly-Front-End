@@ -2,11 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import MainLayout from './layouts/MainLayout.jsx'
-import AddContent from './pages/Dashboard/AddContent.jsx'
+import AddEditContent from './pages/Dashboard/AddEditContent.jsx'
 import Bookmarks from './pages/Dashboard/Bookmarks.jsx'
 import Dashboard from './layouts/Dashboard.jsx'
 import FlashCards from './pages/Dashboard/FlashCards.jsx'
-import Help from './pages/Dashboard/Help.jsx'
 import Home from './pages/Dashboard/Home.jsx'
 import Notfound from './pages/Dashboard/Notfound.jsx'
 import MainPage from './pages/MainPage.jsx'
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'addcontent',
-                element: <AddContent />,
+                element: <AddEditContent />,
             },
             {
                 path: 'bookmarks',

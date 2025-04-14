@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Container from '../../components/Container'
 import AddingInput from '../../components/AddingInput'
 
-export default function AddContent() {
+export default function AddEditContent() {
     const [flashcards, setFlashcards] = useState({
         title: '',
         category: '',
@@ -13,14 +13,35 @@ export default function AddContent() {
                 answer: '',
                 hint: '',
             },
-            {
-                question: '',
-                answer: '',
-                hint: '',
-            },
         ],
     })
-    
+
+    const handleChange = (index, field, value) => {
+        const updated = { ...flashcards }
+        updated.questions[index][field] = value
+        setFlashcards(updated)
+    }
+
+    const handleDelete = (index) => {
+        const updated = { ...flashcards }
+        updated.questions = updated.questions.filter((_, i) => i !== index)
+        setFlashcards(updated)
+    }
+
+    const addQuestion = () => {
+        setFlashcards((prev) => ({
+            ...prev,
+            questions: [
+                ...prev.questions,
+                { question: '', answer: '', hint: '' },
+            ],
+        }))
+    }
+
+    useEffect(() => {
+        console.log(flashcards)
+    })
+
     return (
         <div className=" flex flex-col items-center  gap-10 ">
             <Container title="Add Flashcard" icon="fa-solid fa-square-plus">
@@ -31,6 +52,13 @@ export default function AddContent() {
                             <input
                                 className="w-full border border-gray-200 p-2  rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:regal-blue"
                                 placeholder="Enter Title"
+                                value={flashcards.title}
+                                onChange={(e) =>
+                                    setFlashcards((prev) => ({
+                                        ...prev,
+                                        title: e.target.value,
+                                    }))
+                                }
                             ></input>
                         </div>
                         <div className=" flex w-full">
@@ -38,6 +66,13 @@ export default function AddContent() {
                             <input
                                 className="w-full border border-gray-200 p-2  rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:regal-blue"
                                 placeholder="Enter Category"
+                                value={flashcards.category}
+                                onChange={(e) =>
+                                    setFlashcards((prev) => ({
+                                        ...prev,
+                                        category: e.target.value,
+                                    }))
+                                }
                             ></input>
                         </div>
                     </div>
@@ -47,25 +82,37 @@ export default function AddContent() {
                         <textarea
                             className="w-full border border-gray-200 p-2  rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:regal-blue"
                             placeholder="Enter Description . . . ."
+                            value={flashcards.description}
+                            onChange={(e) =>
+                                setFlashcards((prev) => ({
+                                    ...prev,
+                                    description: e.target.value,
+                                }))
+                            }
                         ></textarea>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-10 mb-4 w-full md:w-5/6">
-                        <AddingInput
-                            Question="Question"
-                            Answer="Answer"
-                            Hint="Hint"
-                            index={1}
-                        />
-                        <AddingInput
-                            Question="Question"
-                            Answer="Answer"
-                            Hint="Hint"
-                            index={2}
-                        />
+                        {flashcards.questions.map((q, i) => (
+                            <AddingInput
+                                key={i}
+                                index={i}
+                                question={q.question}
+                                answer={q.answer}
+                                hint={q.hint}
+                                handleChange={handleChange}
+                                handleDelete={handleDelete}
+                            />
+                        ))}
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4 w-full md:w-5/6 ">
-                        <button className=" bg-regal-blue w-full text-white px-4 py-2 rounded-md hover:bg-regal-blue-light transition duration-200 active:bg-regal-blue-dark self-center">
+                        <button
+                            className=" bg-regal-blue w-full text-white px-4 py-2 rounded-md hover:bg-regal-blue-light transition duration-200 active:bg-regal-blue-dark self-center"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                addQuestion()
+                            }}
+                        >
                             Add Question
                         </button>
                         <button className=" bg-regal-blue-darkest text-white px-4 py-2 rounded-md hover:bg-regal-blue-light transition duration-200 w-full active:bg-regal-blue-dark self-center">
