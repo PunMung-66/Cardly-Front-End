@@ -39,7 +39,7 @@ const cardData = [
 
 export default function Home() {
     return (
-        <div className=" flex flex-col items-center gap-10 bg-[#B3EBF2] ">
+        <div className=" flex flex-col items-center gap-10 ">
             {/* Search Bar */}
             <Searchbar />
             {/* Recent Section */}

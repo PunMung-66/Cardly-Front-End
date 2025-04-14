@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Sidebar() {
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
     const Menus_top = [
         {
             title: 'Dashboard',
@@ -23,11 +23,6 @@ export default function Sidebar() {
             title: 'Add',
             icon: 'fa-regular fa-square-plus',
             path: '/dashboard/addcontent',
-        },
-        {
-            title: 'Help',
-            icon: 'fa-solid fa-circle-question',
-            path: '/dashboard/helps',
         },
     ]
     const Menus_down = [

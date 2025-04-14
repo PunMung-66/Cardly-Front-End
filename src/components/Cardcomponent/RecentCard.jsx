@@ -34,7 +34,7 @@ const RecentCard = ({
         </div>
     )
 
-    return <FlipCard front={front} back={back} flipOn="hover" />
+    return <FlipCard front={front} back={back} flipOn="hover" type='list' />
 }
 
 export default RecentCard

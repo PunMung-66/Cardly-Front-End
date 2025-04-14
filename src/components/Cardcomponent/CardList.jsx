@@ -37,6 +37,7 @@ export default function CardList({
                         owner={card.owner}
                         icon={icon}
                         icon_color={icon_color}
+                        type="list"
                     />
                 ))}
             </div>
@@ -74,6 +75,7 @@ export default function CardList({
                                 owner={card.owner}
                                 icon={icon}
                                 icon_color={icon_color}
+                                type="slide"
                             />
                         ))}
                     </div>

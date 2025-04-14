@@ -59,10 +59,6 @@ const router = createBrowserRouter([
                 path: 'settings',
                 element: <Settings />,
             },
-            {
-                path: 'helps',
-                element: <Help />,
-            },
         ],
         errorElement: <Notfound />,
     },

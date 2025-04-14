@@ -8,6 +8,7 @@ const Card = ({
     owner = 'Owner Name',
     icon = 'fa-solid fa-card-diamond',
     icon_color = 'text-regal-blue',
+    type = 'slide',
 }) => {
     const front = (
         <div className="bg-white shadow-md rounded-lg p-4  flex-shrink-0 flex flex-col justify-between gap-4 cursor-pointer">
@@ -46,7 +47,7 @@ const Card = ({
             front={front}
             back={back}
             flipOn="hover"
-            set_style=" w-96 h-36 flex-shrink-0"
+            type={type}
         />
     )
 }

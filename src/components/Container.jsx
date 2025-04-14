@@ -15,7 +15,7 @@ export default function Container({ children, icon, icon_color, title }) {
                         icon={icon}
                         icon_color={icon_color}
                     />
-                    <div className="flex flex-col items-start w-full">
+                    <div className="flex flex-col items-center w-full">
                         {children}
                     </div>
                 </div>
