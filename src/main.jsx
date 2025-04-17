@@ -15,7 +15,7 @@ import Signup from './pages/Auth/Signup.jsx'
 import Settings from './pages/Dashboard/Settings.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Wrapper from './pages/Auth/Wrapper.jsx'
-
+import Nuz from './pages/Nuz.jsx'
 const router = createBrowserRouter([
     {
         path: '/',
@@ -58,6 +58,11 @@ const router = createBrowserRouter([
                 path: 'settings',
                 element: <Settings />,
             },
+            {
+                path: 'nus',
+                element: <Nuz />
+
+            }
         ],
         errorElement: <Notfound />,
     },
