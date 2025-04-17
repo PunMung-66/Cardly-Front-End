@@ -49,6 +49,8 @@ export default function Sidebar() {
     return (
         <>
             <div
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
                 className={`${
                     isOpen
                         ? 'w-[13rem] lg:w-60 left-0'
