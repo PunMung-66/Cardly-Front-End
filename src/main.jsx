@@ -11,6 +11,7 @@ import Notfound from './pages/Dashboard/Notfound.jsx'
 import MainPage from './pages/MainPage.jsx'
 import Login from './pages/Auth/Login.jsx'
 import Signup from './pages/Auth/Signup.jsx'
+import FlashCard from './pages/Flashcard/Flashcard.jsx'
 
 import Settings from './pages/Dashboard/Settings.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: 'myflashcards',
                 element: <MyFlashCards />,
+            },
+            {
+                path: 'flashcard/:id',
+                element: <FlashCard />,
             },
             {
                 path: 'addcontent',
