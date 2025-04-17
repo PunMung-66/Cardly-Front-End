@@ -7,6 +7,7 @@ export default function AddEditContent() {
         title: '',
         category: '',
         description: '',
+        status: 'Private',
         questions: [
             {
                 question: '',
@@ -15,6 +16,16 @@ export default function AddEditContent() {
             },
         ],
     })
+
+    const handleSelectChange = (event) => {
+        const value = event.target.value
+        setFlashcards((prev) => ({
+            ...prev,
+            status: value,
+        }))
+    }
+
+    
 
     const handleChange = (index, field, value) => {
         const updated = { ...flashcards }
@@ -77,7 +88,7 @@ export default function AddEditContent() {
                         </div>
                     </div>
 
-                    <div className="flex  w-full md:w-5/6">
+                    <div className="flex  w-full md:w-5/6 ">
                         <i className="fa-solid fa-subtitles flex items-center bg-white py-2 px-3 border rounded-l-lg shadow-md hover:bg-gray-200 active:bg-gray-300 border-gray-200 text-xl"></i>
                         <textarea
                             className="w-full border border-gray-200 p-2  rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:regal-blue"
@@ -90,6 +101,14 @@ export default function AddEditContent() {
                                 }))
                             }
                         ></textarea>
+                        <select
+                            value={flashcards.status}
+                            onChange={handleSelectChange}
+                            className=" appearance-none ml-2 border border-gray-200 bg-regal-blue text-white p-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:regal-blue"
+                        >
+                            <option value="Public">Public</option>
+                            <option value="Private">Private</option>
+                        </select>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-10 mb-4 w-full md:w-5/6">
                         {flashcards.questions.map((q, i) => (

@@ -36,7 +36,7 @@ const cardData = [
     },
 ]
 
-export default function FlashCards() {
+export default function MyFlashCards() {
     return (
         <div className="w-full flex flex-col gap-10">
             <Searchbar />

@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import MainLayout from './layouts/MainLayout.jsx'
 import AddEditContent from './pages/Dashboard/AddEditContent.jsx'
-import Bookmarks from './pages/Dashboard/Bookmarks.jsx'
+import MyBookmarks from './pages/Dashboard/MyBookmarks.jsx'
 import Dashboard from './layouts/Dashboard.jsx'
-import FlashCards from './pages/Dashboard/FlashCards.jsx'
+import MyFlashCards from './pages/Dashboard/MyFlashCards.jsx'
 import Home from './pages/Dashboard/Home.jsx'
 import Notfound from './pages/Dashboard/Notfound.jsx'
 import MainPage from './pages/MainPage.jsx'
@@ -43,16 +43,16 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: 'flashcards',
-                element: <FlashCards />,
+                path: 'myflashcards',
+                element: <MyFlashCards />,
             },
             {
                 path: 'addcontent',
                 element: <AddEditContent />,
             },
             {
-                path: 'bookmarks',
-                element: <Bookmarks />,
+                path: 'mybookmarks',
+                element: <MyBookmarks />,
             },
             {
                 path: 'settings',

@@ -12,12 +12,12 @@ export default function Sidebar() {
         {
             title: 'Flash Cards',
             icon: 'fa-duotone fa-regular fa-cards-blank',
-            path: '/dashboard/flashcards',
+            path: '/dashboard/myflashcards',
         },
         {
             title: 'Bookmark',
             icon: 'fa-solid fa-book-bookmark',
-            path: '/dashboard/bookmarks',
+            path: '/dashboard/mybookmarks',
         },
         {
             title: 'Add',
@@ -43,6 +43,8 @@ export default function Sidebar() {
     const handleNavtoPath = (path) => {
         navigate(path)
     }
+
+    
 
     return (
         <>
