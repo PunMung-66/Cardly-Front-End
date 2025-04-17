@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import Subheader from '../../components/Subheader'
 
 export default function FlashCard() {
     const { id } = useParams()

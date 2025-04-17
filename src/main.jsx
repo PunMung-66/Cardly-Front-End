@@ -11,7 +11,7 @@ import Notfound from './pages/Dashboard/Notfound.jsx'
 import MainPage from './pages/MainPage.jsx'
 import Login from './pages/Auth/Login.jsx'
 import Signup from './pages/Auth/Signup.jsx'
-import FlashCard from './pages/Flashcard/Flashcard.jsx'
+import FlashCard from './pages/FlashCard/FlashCard.jsx'
 
 import Settings from './pages/Dashboard/Settings.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
