@@ -1,8 +1,16 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import supabase from '../helper/supabaseClient'
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(false)
+
+    const signOut = async () => {
+        const { error } = await supabase.auth.signOut()
+        if (error) throw error
+        navigate('/auth/login')
+    }
+
     const Menus_top = [
         {
             title: 'Dashboard',
@@ -34,17 +42,14 @@ export default function Sidebar() {
         {
             title: 'Logout',
             icon: 'fa-solid fa-right-from-bracket',
-            path: '/dashboard/logout',
+            path: '/',
         },
     ]
 
     const navigate = useNavigate()
-
     const handleNavtoPath = (path) => {
         navigate(path)
     }
-
-    
 
     return (
         <>
@@ -99,7 +104,12 @@ export default function Sidebar() {
                         <div
                             key={index}
                             className=" flex items-center gap-4 cursor-pointer text-center p-2 hover:bg-gray-100 hover:font-semibold rounded-md relative"
-                            onClick={() => handleNavtoPath(menu.path)}
+                            onClick={() => {
+                                handleNavtoPath(menu.path)
+                                if (menu.title === 'Logout') {
+                                    signOut()
+                                }
+                            }}
                         >
                             <i className={`${menu.icon} text-xl`}></i>
                             <div
