@@ -4,9 +4,36 @@ import ContainerContext from '../../Context/ContainerContext'
 import { useContext } from 'react'
 
 const cardDataDefault = [
-    { title: 'Card Title', description: 'Card description goes here.' },
-    { title: 'Card Title', description: 'Card description goes here.' },
-    { title: 'Card Title', description: 'Card description goes here.' },
+    {
+        record_id: 'r001',
+        title: 'Card Title',
+        description: 'Card description goes here.',
+        owner: 'Owner',
+    },
+    {
+        record_id: 'r002',
+        title: 'Card Title',
+        description: 'Card description goes here.',
+        owner: 'Owner',
+    },
+    {
+        record_id: 'r003',
+        title: 'Card Title',
+        description: 'Card description goes here.',
+        owner: 'Owner',
+    },
+    {
+        record_id: 'r004',
+        title: 'Card Title',
+        description: 'Card description goes here.',
+        owner: 'Owner',
+    },
+    {
+        record_id: 'r005',
+        title: 'Card Title',
+        description: 'Card description goes here.',
+        owner: 'Owner',
+    },
 ]
 
 export default function CardList({
@@ -32,6 +59,7 @@ export default function CardList({
                 {cardData.map((card, index) => (
                     <Card
                         key={index}
+                        record_id={card.record_id}
                         title={card.title}
                         description={card.description}
                         owner={card.owner}
@@ -70,6 +98,7 @@ export default function CardList({
                         {cardData.map((card, index) => (
                             <Card
                                 key={index}
+                                record_id={card.record_id}
                                 title={card.title}
                                 description={card.description}
                                 owner={card.owner}
