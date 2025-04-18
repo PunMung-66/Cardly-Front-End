@@ -77,7 +77,7 @@ export default function PlayingPage() {
                 {/* <div className="w-full h-full flex items-center justify-center flex-col p-5 relative">
                     <CardPlay front={contentfront} back={contentback} />
                 </div> */}
-                <div className='w-full h-full'>
+                <div className='w-full md:w-fit'>
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentCardIndex}
