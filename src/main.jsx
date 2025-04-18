@@ -17,6 +17,8 @@ import Settings from './pages/Dashboard/Settings.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Wrapper from './pages/Auth/Wrapper.jsx'
 import Nuz from './pages/Nuz.jsx'
+import PlayingPage from './pages/FlashCard/PlayingPage.jsx'
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -30,7 +32,18 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: 'dashboard',
+        path: '/play/flashcard/:id',
+        element: (
+            <Wrapper>
+                <MainLayout>
+                    <PlayingPage />
+                </MainLayout>
+            </Wrapper>
+        ),
+        errorElement: <Notfound />,
+    },
+    {
+        path: '/dashboard',
         element: (
             <Wrapper>
                 <MainLayout>
@@ -65,9 +78,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'nus',
-                element: <Nuz />
-
-            }
+                element: <Nuz />,
+            },
         ],
         errorElement: <Notfound />,
     },
