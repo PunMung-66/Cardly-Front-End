@@ -12,7 +12,8 @@ export default function PlayingPage() {
     const [question, setQuestion] = useState({
         questions: [
             {
-                question: 'question01',
+                question:
+                    'question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01            question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01 question01',
                 answer: 'answer01',
                 hint: 'hint01',
             },
