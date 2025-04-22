@@ -7,7 +7,7 @@ export default function Signup() {
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
     const [enable, setEnable] = useState(false)
-    // const [loading, setLoading] = useState(false)
+    const [displayName, setDisplayName] = useState('')
 
     const handleSumit = async (e) => {
         e.preventDefault()
@@ -18,6 +18,11 @@ export default function Signup() {
             const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
+                options: {
+                    data: {
+                        display_name: displayName,
+                    },
+                },
             })
 
             if (data) {
@@ -42,20 +47,32 @@ export default function Signup() {
             {message && <div>{message}</div>}
             <br />
             <form onSubmit={handleSumit}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="email"
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    autoComplete="current-password"
-                />
+                <div className='flex flex-col gap-2 w-3/5'>
+                    <input
+                        type="text"
+                        placeholder="Display Name"
+                        value={displayName}
+                        onChange={(e) => setDisplayName(e.target.value)}
+                        autoComplete="name"
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        autoComplete="email"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        autoComplete="current-password"
+                        required
+                    />
+                </div>
                 <button disabled={enable}>Signup</button>
                 <div>
                     {' '}
