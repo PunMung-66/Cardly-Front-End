@@ -18,6 +18,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Wrapper from './pages/Auth/Wrapper.jsx'
 import Nuz from './pages/Nuz.jsx'
 import PlayingPage from './pages/FlashCard/PlayingPage.jsx'
+import RootLayout from './layouts/Signup-Login.jsx'
 
 const router = createBrowserRouter([
     {
