@@ -85,7 +85,7 @@ export default function Login() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             autoComplete="email"
-                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:outline-regal-blue-400 focus:ring-1 focus:ring-regal-blue-light"
+                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-regal-blue-darkest"
                                         />
 
                                         <input
@@ -94,7 +94,7 @@ export default function Login() {
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
                                             autoComplete="current-password"
-                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:outline-regal-blue-400 focus:ring-1 focus:ring-regal-blue-light"
+                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-regal-blue-darkest"
                                         />
 
                                         <button disabled={enable} className="bg-gray-900 text-white py-3 rounded-md hover:bg-gray-700 transition duration-200">

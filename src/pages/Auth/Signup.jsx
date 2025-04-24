@@ -9,7 +9,7 @@ export default function Signup() {
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
     const [enable, setEnable] = useState(false)
-    // const [loading, setLoading] = useState(false)
+    const [displayName, setDisplayName] = useState('')
 
     // Animations
     const pageVariants = {
@@ -34,6 +34,11 @@ export default function Signup() {
             const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
+                options: {
+                    data: {
+                        displayName: displayName,
+                    },
+                },
             })
 
             if (data) {
@@ -86,7 +91,16 @@ export default function Signup() {
                                     {message && <div className = "text-center text-sm text-red-500 mt-2">{message}</div>}
                                     <br />
                     
-                                    <form onSubmit={handleSumit} className="flex flex-col gap-4">
+                                    <form onSubmit={handleSumit} className="flex flex-col gap-3">
+
+                                        <input
+                                            type="text"
+                                            placeholder="Display Name"
+                                            value={displayName}
+                                            onChange={(e) => setDisplayName(e.target.value)}
+                                            autoComplete="name"
+                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-regal-blue-darkest"
+                                            />
 
                                         <input
                                             type="email"
@@ -94,7 +108,7 @@ export default function Signup() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             autoComplete="email"
-                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none"
+                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-regal-blue-darkest"
                                         />  
 
                                         <input
@@ -103,11 +117,11 @@ export default function Signup() {
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
                                             autoComplete="current-password"
-                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none"
+                                            className="bg-blue-50 px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-regal-blue-darkest"
                                         />
                     
                                         <button disabled={enable} className="bg-gray-900 text-white py-3 rounded-md hover:bg-gray-700 transition duration-200">
-                                            Continue
+                                            Signup
                                         </button>
                                             
                                             
