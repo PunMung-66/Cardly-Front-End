@@ -11,19 +11,11 @@ export default function Signup() {
     const [enable, setEnable] = useState(false)
     const [displayName, setDisplayName] = useState('')
 
-    // Animations
-    const pageVariants = {
-        initial: {initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: -20 } },
-    };
-
     const handleNavigate = () => {
         setTimeout(() => {
           navigate('/auth/login');
         }, 400); // match the animation duration
       };
-
 
     const handleSumit = async (e) => {
         e.preventDefault()
@@ -36,7 +28,7 @@ export default function Signup() {
                 password: password,
                 options: {
                     data: {
-                        displayName: displayName,
+                        display_name: displayName,
                     },
                 },
             })
