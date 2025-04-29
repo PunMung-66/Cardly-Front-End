@@ -6,7 +6,7 @@ export default function Notfound() {
     const navigate = useNavigate() 
 
     const handleNavigate = () => {
-        navigate('/dashboard', { replace: true })
+        navigate('/', { replace: true })
     }
 
     return (
@@ -18,9 +18,9 @@ export default function Notfound() {
             <p className="text-lg text-center mb-2">
                 Oops! The page you are looking for does not exist.
             </p>
-            <a onClick={handleNavigate} className="text-lg text-blue-500 hover:underline">
+            <button onClick={handleNavigate} className="text-lg text-blue-500 hover:underline">
                 Go back to Home
-            </a>
+            </button>
 
         </div>
     )
