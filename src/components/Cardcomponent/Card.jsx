@@ -21,7 +21,7 @@ const Card = ({
             <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between w-full gap-2">
                     <h3 className="text-sm font-semibold truncate">
-                        {title} {record_id}
+                        {title}
                     </h3>
                     <i className={` text-md ${icon + ' ' + icon_color}`}></i>
                 </div>

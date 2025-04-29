@@ -1,6 +1,6 @@
 // ContainerContext.js
 import { createContext } from 'react'
 
-const ContainerContextUserID = createContext()
+const ContainerContext = createContext()
 
-export default ContainerContextUserID
+export default ContainerContext
