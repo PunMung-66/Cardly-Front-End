@@ -17,7 +17,7 @@ const RecentCard = ({
         <div className="bg-white h-full w-full rounded-xl p-4 flex flex-col gap-4  shadow-md">
             <div>
                 <h3 className="text-lg font-semibold line-clamp-1">
-                    {title} {record_id}
+                    {title}
                 </h3>
                 <p className="text-gray-600 text-[14px] line-clamp-1">
                     {description}

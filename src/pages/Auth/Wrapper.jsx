@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import supabase from '../../helper/supabaseClient'
 import { Navigate } from 'react-router-dom'
-import ContainerContextUserID from '../../Context/ContainerContext.js'
+import ContainerContextUserID from '../../Context/ContainerUserID'
 
 function Wrapper({ children }) {
     const [authenticated, setAuthenticated] = useState(false)

@@ -8,31 +8,31 @@ const cardDataDefault = [
         record_id: 'r001',
         title: 'Card Title',
         description: 'Card description goes here.',
-        owner: 'Owner',
+        name: 'name',
     },
     {
         record_id: 'r002',
         title: 'Card Title',
         description: 'Card description goes here.',
-        owner: 'Owner',
+        name: 'name',
     },
     {
         record_id: 'r003',
         title: 'Card Title',
         description: 'Card description goes here.',
-        owner: 'Owner',
+        name: 'name',
     },
     {
         record_id: 'r004',
         title: 'Card Title',
         description: 'Card description goes here.',
-        owner: 'Owner',
+        name: 'name',
     },
     {
         record_id: 'r005',
         title: 'Card Title',
         description: 'Card description goes here.',
-        owner: 'Owner',
+        name: 'name',
     },
 ]
 
@@ -62,7 +62,7 @@ export default function CardList({
                         record_id={card.record_id}
                         title={card.title}
                         description={card.description}
-                        owner={card.owner}
+                        owner={card.name}
                         icon={icon}
                         icon_color={icon_color}
                         type="list"
@@ -101,7 +101,7 @@ export default function CardList({
                                 record_id={card.record_id}
                                 title={card.title}
                                 description={card.description}
-                                owner={card.owner}
+                                owner={card.name}
                                 icon={icon}
                                 icon_color={icon_color}
                                 type="slide"
