@@ -10,11 +10,13 @@ export default function Container({ children, icon, icon_color, title }) {
         <ContainerContext.Provider value={value}>
             <div className="w-full flex flex-col">
                 <div className="flex flex-col items-center justify-center gap-5">
-                    <Subheader
-                        title={title}
-                        icon={icon}
-                        icon_color={icon_color}
-                    />
+                    {
+                        title ? (
+                            <Subheader icon={icon} icon_color={icon_color} title={title} />
+                        ) : (
+                            <h1 className="text-3xl font-bold text-center">{title}</h1>
+                        )
+                    }
                     <div className="flex flex-col items-center w-full">
                         {children}
                     </div>

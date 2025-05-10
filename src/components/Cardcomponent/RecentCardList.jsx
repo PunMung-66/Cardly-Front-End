@@ -4,28 +4,32 @@ import RecentCard from './RecentCard'
 
 const recentcardsData_Default = [
     {
+        record_id: 'r001',
         title: 'Introducing SmartHome AI',
         description:
             'Explore how artificial intelligence transforms modern homes with automation and energy efficiency.',
-        owner: 'Alice Johnson',
+        name: 'Alice Johnson',
     },
     {
+        record_id: 'r002',
         title: 'Drone Programming Workshop',
         description:
             'Hands-on experience flying and coding drones in real-time simulations and challenges.',
-        owner: 'Ben Carter',
+        name: 'Ben Carter',
     },
     {
+        record_id: 'r003',
         title: 'IoT in Everyday Life',
         description:
             'Learn how IoT devices connect and share data to make smarter cities and homes.',
-        owner: 'Chloe Zhang',
+        name: 'Chloe Zhang',
     },
     {
+        record_id: 'r004',
         title: 'AI for Beginners',
         description:
             'A step-by-step guide to understanding how artificial intelligence works and its real-world applications.',
-        owner: 'David Lee',
+        name: 'David Lee',
     },
 ]
 
@@ -45,9 +49,10 @@ export default function RecentCardList({
                     {recentcardsData.map((card, index) => (
                         <RecentCard
                             key={index}
+                            record_id={card.record_id}
                             title={card.title}
                             description={card.description}
-                            owner={card.owner}
+                            owner={card.name}
                         />
                     ))}
                 </div>

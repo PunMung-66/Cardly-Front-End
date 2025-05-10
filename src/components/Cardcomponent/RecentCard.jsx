@@ -1,16 +1,24 @@
 // components/RecentCard.jsx
 import FlipCard from './FlipCard'
 import getRandomColor from '../../functions/RandomColor'
+import { useNavigate } from 'react-router-dom'
 
 const RecentCard = ({
+    record_id = 'r001',
     title = 'title',
     description = 'description',
     owner = 'Owner Name',
 }) => {
+    const navigate = useNavigate()
+    const handleClicktoFlashCard = () => {
+        navigate(`/dashboard/flashcard/${record_id}`)
+    }
     const front = (
         <div className="bg-white h-full w-full rounded-xl p-4 flex flex-col gap-4  shadow-md">
             <div>
-                <h3 className="text-lg font-semibold line-clamp-1">{title}</h3>
+                <h3 className="text-lg font-semibold line-clamp-1">
+                    {title}
+                </h3>
                 <p className="text-gray-600 text-[14px] line-clamp-1">
                     {description}
                 </p>
@@ -28,13 +36,16 @@ const RecentCard = ({
     )
 
     const back = (
-        <div className="bg-blue-900 text-white px-6 py-2 h-full w-full flex flex-col items-center justify-center text-center rounded-xl">
+        <div
+            className="bg-blue-900 text-white px-6 py-2 h-full w-full flex flex-col items-center justify-center text-center rounded-xl"
+            onClick={handleClicktoFlashCard}
+        >
             <h3 className="text-xl font-bold mb-2">{title}</h3>
             <p className="text-sm text-blue-100  line-clamp-2">{description}</p>
         </div>
     )
 
-    return <FlipCard front={front} back={back} flipOn="hover" type='list' />
+    return <FlipCard front={front} back={back} flipOn="hover" type="list" />
 }
 
 export default RecentCard

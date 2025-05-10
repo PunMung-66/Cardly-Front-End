@@ -1,8 +1,10 @@
 import React from 'react'
 import getRandomColor from '../../functions/RandomColor'
 import FlipCard from './FlipCard'
+import { useNavigate } from 'react-router-dom'
 
 const Card = ({
+    record_id = 'r001',
     title = 'title',
     description = 'description',
     owner = 'Owner Name',
@@ -10,8 +12,12 @@ const Card = ({
     icon_color = 'text-regal-blue',
     type = 'slide',
 }) => {
+    const navigate = useNavigate()
+    const handleClicktoFlashCard = () => {
+        navigate(`/dashboard/flashcard/${record_id}`)
+    }
     const front = (
-        <div className="bg-white shadow-md rounded-lg p-4  flex-shrink-0 flex flex-col justify-between gap-4 cursor-pointer">
+        <div className="bg-white shadow-md rounded-lg p-4 h-full  flex-shrink-0 flex flex-col justify-between gap-4 cursor-pointer">
             <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between w-full gap-2">
                     <h3 className="text-sm font-semibold truncate">{title}</h3>
@@ -34,7 +40,10 @@ const Card = ({
     )
 
     const back = (
-        <div className="bg-blue-900 text-white px-6 py-4 w-full flex flex-col items-center justify-center text-center rounded-xl">
+        <div
+            className="bg-blue-900 text-white px-6 py-4 h-full w-full flex flex-col  items-center justify-center text-center rounded-xl"
+            onClick={handleClicktoFlashCard}
+        >
             <h3 className="text-xl font-bold mb-2 line-clamp-1">{title}</h3>
             <p className="text-sm text-blue-100 mb-4 line-clamp-2">
                 {description}
@@ -42,14 +51,7 @@ const Card = ({
         </div>
     )
 
-    return (
-        <FlipCard
-            front={front}
-            back={back}
-            flipOn="hover"
-            type={type}
-        />
-    )
+    return <FlipCard front={front} back={back} flipOn="hover" type={type} />
 }
 
 export default Card

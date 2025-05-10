@@ -74,7 +74,7 @@ export default function Sidebar() {
                             !isOpen && 'scale-0'
                         } absolute left-16 origin-left duration-300 font-bold `}
                     >
-                        CARD_LY
+                        CARDLY
                     </h2>
                 </div>
 
