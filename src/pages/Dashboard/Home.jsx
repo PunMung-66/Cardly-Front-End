@@ -8,41 +8,60 @@ import { API } from '../../config/Config'
 
 export default function Home() {
     const [cardData, setCardData] = useState([])
+    const [recentcardData, setRecentCardData] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        setLoading(true)
         const fetchFlashcards = async () => {
+            setLoading(true)
             console.log('Fetching flashcards...')
 
             try {
-                const response = await fetch(`${API}/api/cover/homepage`, {
+                const homepageRes = await fetch(`${API}/api/cover/homepage`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 })
 
-                if (response.ok) {
-                    const result = await response.json()
-                    console.log('Flashcards fetched:', result)
-                    setCardData(result)
-                    setLoading(false)
+                if (homepageRes.ok) {
+                    const homepageData = await homepageRes.json()
+                    console.log('Homepage flashcards fetched:', homepageData)
+                    setCardData(homepageData)
                 } else {
                     console.error(
-                        'Failed to fetch flashcards:',
-                        response.statusText
+                        'Failed to fetch homepage flashcards:',
+                        homepageRes.statusText
                     )
-                    setLoading(false)
+                }
+
+                const recentRes = await fetch(`${API}/api/cover/recently`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+
+                if (recentRes.ok) {
+                    const recentData = await recentRes.json()
+                    console.log('Recent flashcards fetched:', recentData)
+                    setRecentCardData(recentData)
+                } else {
+                    console.error(
+                        'Failed to fetch recent flashcards:',
+                        recentRes.statusText
+                    )
                 }
             } catch (error) {
                 console.error('Error while fetching flashcards:', error)
+            } finally {
                 setLoading(false)
             }
         }
 
         fetchFlashcards()
     }, [])
+    
 
     return (
         <>
@@ -52,12 +71,12 @@ export default function Home() {
                     <Searchbar />
                     {/* Recent Section */}
                     <Container
-                        title="Recently Viewed"
+                        title="Recently Added"
                         icon="fa-solid fa-mountain-sun"
                         icon_color="text-green-500"
                     >
                         <RecentCardList
-                            recentcardsData={cardData.slice(0, 4)}
+                            recentcardsData={recentcardData}
                         />
                     </Container>
                     {/* Popular Section */}
@@ -67,7 +86,7 @@ export default function Home() {
                             icon="fa-solid fa-fire"
                             icon_color="text-red-500"
                         >
-                            <CardList cardData={cardData.slice(4)} />
+                            <CardList cardData={cardData.slice(0, 4)} />
                         </Container>
                     )}
                     {cardData.length > 4 && (
