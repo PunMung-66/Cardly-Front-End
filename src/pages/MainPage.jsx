@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import CardActionArea from '@mui/material/CardActionArea';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {GrowingCard,CardHeader} from './MainPageElements/Card';
-import exploreimg from './MainPageElements/image/Explore.png'
-import practiceimg from './MainPageElements/image/Practice test.png'
-import studyimg from './MainPageElements/image/Study.png'
-import flashcardimg from './MainPageElements/image/Flashcard.png'
+import {GrowingCard,CardHeader} from '../theme/Card';
+import exploreimg from '../assets/image/Explore.png'
+import practiceimg from '../assets/image/Practice test.png'
+import studyimg from '../assets/image/Study.png'
+import flashcardimg from '../assets/image/Flashcard.png'
 import { faFacebook, faInstagram, faYoutube, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
 

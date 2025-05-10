@@ -10,6 +10,7 @@ import MyFlashCards from './pages/Dashboard/MyFlashCards.jsx'
 import Home from './pages/Dashboard/Home.jsx'
 import Notfound from './pages/Dashboard/Notfound.jsx'
 import MainPage from './pages/MainPage.jsx'
+import Forgetpw from './pages/Auth/Forgetpw.jsx'
 import Login from './pages/Auth/Login.jsx'
 import Signup from './pages/Auth/Signup.jsx'
 import FlashCard from './pages/FlashCard/FlashCard.jsx'
@@ -17,7 +18,6 @@ import FlashCard from './pages/FlashCard/FlashCard.jsx'
 import Profile from './pages/Dashboard/Profile.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Wrapper from './pages/Auth/Wrapper.jsx'
-import Nuz from './pages/Nuz.jsx'
 import PlayingPage from './pages/FlashCard/PlayingPage.jsx'
 
 const router = createBrowserRouter([
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
         children: [
             { path: 'signup', element: <Signup /> },
             { path: 'login', element: <Login /> },
+            { path: 'forgotpassword', element: <Forgetpw /> }
         ],
     },
     {
@@ -80,10 +81,6 @@ const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <Profile />,
-            },
-            {
-                path: 'nus',
-                element: <Nuz />,
             },
         ],
         errorElement: <Notfound />,
