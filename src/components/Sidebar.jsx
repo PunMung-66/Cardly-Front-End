@@ -18,12 +18,12 @@ export default function Sidebar() {
             path: '/dashboard',
         },
         {
-            title: 'Flash Cards',
+            title: 'My Flashcards',
             icon: 'fa-duotone fa-regular fa-cards-blank',
             path: '/dashboard/myflashcards',
         },
         {
-            title: 'Bookmark',
+            title: 'My Bookmark',
             icon: 'fa-solid fa-book-bookmark',
             path: '/dashboard/mybookmarks',
         },

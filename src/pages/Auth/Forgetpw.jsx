@@ -37,7 +37,7 @@ export default function Forgetpw() {
 
     const handleNavigate = () => {
         setTimeout(() => {
-            navigate('/auth/signup')
+            navigate('/auth/login')
         }, 400) // match the animation duration
     }
 
