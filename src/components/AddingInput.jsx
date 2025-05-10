@@ -17,6 +17,7 @@ export default function AddingInput({
 
             <div className="flex flex-col items-center justify-center gap-6 w-full  p-7">
                 <div className="w-full flex flex-col items-start justify-center">
+                {/* Enter question */}
                     <input
                         type="text"
                         name="question"
@@ -26,12 +27,14 @@ export default function AddingInput({
                         }
                         placeholder="Enter Question"
                         className=" text-regal-blue font-medium py-2 w-full mb-4 focus:outline-none duration-200 shadow-[0px_2px_0px_0px_#f0f4ff] focus:shadow-[0px_3px_0px_0px_#f0f4ff] focus:bg-white"
+                        required
                     />
                     <p className="text-sm font-semibold uppercase text-regal-sky">
                         Question
                     </p>
                 </div>
                 <div className="w-full flex flex-col items-start justify-center">
+                {/* Enter answer */}
                     <input
                         type="text"
                         name="answer"
@@ -41,6 +44,7 @@ export default function AddingInput({
                         }
                         placeholder="Enter Answer"
                         className=" text-regal-blue font-medium py-2 w-full mb-4 focus:outline-none duration-200 shadow-[0px_2px_0px_0px_#f0f4ff] focus:shadow-[0px_3px_0px_0px_#f0f4ff] focus:bg-white"
+                        required
                     />
                     <p className="text-sm font-semibold uppercase text-regal-sky">
                         Answer
