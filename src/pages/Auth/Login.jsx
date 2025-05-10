@@ -58,7 +58,8 @@ export default function Login() {
         setMessage('')
 
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: 'http://localhost:5173/auth/forgotpassword', // Replace with your actual reset page
+            redirectTo:
+                'https://cardly-front-end.vercel.app/auth/forgotpassword', // Replace with your actual reset page
         })
 
         if (error) {
