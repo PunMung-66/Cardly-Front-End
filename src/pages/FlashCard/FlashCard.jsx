@@ -1,65 +1,73 @@
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect, useContext, use } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import StarRating from '../../components/StarRating'
 import Loading from '../Loading'
 import ContainerContextUserID from '../../Context/ContainerUserID'
 import { API } from '../../config/Config'
 
 export default function FlashCard() {
-    const [bookmark, setBookmark] = useState(false)
+    const navigate = useNavigate()
     const [rating, setRating] = useState(0)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
     const { userId } = useContext(ContainerContextUserID)
-    const navigate = useNavigate()
     const [reload, setReload] = useState(false)
+    const [bookmark, setBookmark] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
-            try {
-                // Fetch flashcards
-                const response_flashcard = await fetch(
-                    `${API}/api/cover/full/${id}`,
-                    {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                )
 
-                if (response_flashcard.ok) {
-                    const result = await response_flashcard.json()
-                    setData(result)
+            try {
+                const headers = { 'Content-Type': 'application/json' }
+
+                const [flashcardRes, ratingRes, bookmarkRes] =
+                    await Promise.all([
+                        fetch(`${API}/api/cover/full/${id}`, {
+                            method: 'GET',
+                            headers,
+                        }),
+                        fetch(`${API}/api/rating/${id}/${userId}`, {
+                            method: 'GET',
+                            headers,
+                        }),
+                        fetch(`${API}/api/bookmark/${userId}/${id}`, {
+                            method: 'GET',
+                            headers,
+                        }),
+                    ])
+
+                if (flashcardRes.ok) {
+                    const flashcardData = await flashcardRes.json()
+                    // console.log('Flashcard data:', flashcardData)
+                    setData(flashcardData)
                 } else {
                     console.error(
                         'Failed to fetch flashcards:',
-                        response_flashcard.statusText
+                        flashcardRes.statusText
                     )
                 }
 
-                // Fetch rating
-                const response_rating = await fetch(
-                    `${API}/api/rating/${id}/${userId}`,
-                    {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                )
-
-                if (response_rating.ok) {
-                    const result = await response_rating.json()
-                    console.log('Rating fetched:', result)
-                    setRating(result.rating)
+                if (ratingRes.ok) {
+                    const ratingData = await ratingRes.json()
+                    setRating(ratingData.rating)
                 } else {
                     console.error(
                         'Failed to fetch rating:',
-                        response_rating.statusText
+                        ratingRes.statusText
+                    )
+                }
+
+                if (bookmarkRes.ok) {
+                    const bookmarkData = await bookmarkRes.json()
+                    console.log('Bookmark data:', bookmarkData)
+                    setBookmark(bookmarkData.exists)
+                } else {
+                    console.error(
+                        'Failed to fetch bookmark:',
+                        bookmarkRes.statusText
                     )
                 }
             } catch (error) {
@@ -71,6 +79,38 @@ export default function FlashCard() {
 
         fetchData()
     }, [id, userId, reload])
+
+    const toggleBookmark = async () => {
+        setLoading(true)
+
+        try {
+            const response = await fetch(
+                `${API}/api/bookmark/${userId}/${id}`,
+                {
+                    method: bookmark ? 'DELETE' : 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            )
+
+            if (response.ok) {
+                setBookmark(!bookmark) // toggle state manually
+                console.log(
+                    `Bookmark ${bookmark ? 'removed' : 'added'} successfully`
+                )
+            } else {
+                console.error(
+                    `Failed to ${bookmark ? 'remove' : 'add'} bookmark:`,
+                    response.statusText
+                )
+            }
+        } catch (error) {
+            console.error(`Error while toggling bookmark:`, error)
+        } finally {
+            setLoading(false)
+        }
+    }
 
     const goBack = () => {
         navigate(-1) // This goes back to the previous path
@@ -100,6 +140,32 @@ export default function FlashCard() {
         }
     }
 
+    const handleDelete = async () => {
+        setLoading(true)
+        try {
+            const response = await fetch(`${API}/api/record/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            if (response.ok) {
+                console.log('Flashcard deleted successfully')
+                navigate(-1) // Go back after deletion
+            } else {
+                console.error('Failed to delete flashcard:', response.statusText)
+            }
+        } catch (error) {
+            console.error('Error while deleting flashcard:', error)
+        } finally {
+            navigate('/dashboard/myflashcards') // Go back after deletion
+        }
+    }
+
+    const handleEdit = () => {
+        navigate(`/dashboard/editcontent/${id}`)
+    }
+
     return (
         <>
             {!loading ? (
@@ -114,7 +180,7 @@ export default function FlashCard() {
                                             ? 'fa-solid fa-bookmark'
                                             : 'fa-regular fa-bookmark'
                                     }`}
-                                    onClick={() => setBookmark(!bookmark)}
+                                    onClick={() => toggleBookmark()}
                                 ></i>
                                 <h1 className=" w-full text-3xl font-bold text-center">
                                     {data.title}
@@ -128,7 +194,20 @@ export default function FlashCard() {
                                         {data.name}
                                     </p>
                                 </div>
+
+                                {data.user_id == userId ? (
+                                    <div className="w-full flex items-center justify-around  rounded-lg  bg-regal-blue shadow-md">
+                                        <i className=" w-full flex justify-center fa-solid fa-pen-to-square text-xl text-white p-4 hover:text-3xl  duration-100 cursor-pointer"
+                                         onClick={() => handleEdit()}
+                                        ></i>
+                                        <div className="w-[4px] h-10 bg-white rounded-lg lg:w-[7px]"></div>
+                                        <i className=" w-full flex justify-center fa-solid fa-trash text-xl text-white p-4 hover:text-3xl duration-100 cursor-pointer"
+                                            onClick={() => handleDelete()}
+                                        ></i>
+                                    </div>
+                                ) : null}
                             </div>
+
                             <div className="w-full flex flex-col items-center justify-center gap-5 mt-5 p-5 rounded-lg bg-white shadow-md relative">
                                 <div className="w-full flex  items-center justify-center gap-5 mt-5 p-5">
                                     <i className="fa-solid fa-star text-yellow-500 md:text-3xl flex items-center justify-center gap-3 pr-4 border-r-4">
@@ -148,7 +227,9 @@ export default function FlashCard() {
                                 </div>
                                 <button
                                     className="w-full h-full flex items-center justify-center gap-5 bg-regal-blue text-white rounded-lg p-3 hover:bg-regal-blue-dark transition duration-200"
-                                    onClick={() => {handleRating() }}
+                                    onClick={() => {
+                                        handleRating()
+                                    }}
                                 >
                                     Rate this flashcard
                                 </button>

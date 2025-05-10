@@ -47,7 +47,7 @@ export default function Home() {
     return (
         <>
             {!loading ? (
-                <div className=" flex flex-col items-center gap-10 ">
+                <div className=" flex flex-col items-center gap-5 ">
                     {/* Search Bar */}
                     <Searchbar />
                     {/* Recent Section */}
@@ -68,6 +68,18 @@ export default function Home() {
                             icon_color="text-red-500"
                         >
                             <CardList cardData={cardData.slice(4)} />
+                        </Container>
+                    )}
+                    {cardData.length > 4 && (
+                        <Container
+                            title=" Flashcards"
+                            icon="fa-regular fa-cards-blank"
+                            // <i class="fa-regular fa-cards-blank"></i>
+                        >
+                            <CardList
+                                cardData={cardData.slice(4)}
+                                type="list"
+                            />
                         </Container>
                     )}
                 </div>

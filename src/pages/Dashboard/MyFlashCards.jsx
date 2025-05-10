@@ -1,78 +1,73 @@
-import React from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Container from '../../components/Container'
 import CardList from '../../components/Cardcomponent/CardList'
 import Searchbar from '../../components/Searchbar'
+import ContainerContextUserID from '../../Context/ContainerUserID'
+import { API } from '../../config/Config'
+import Loading from '../Loading'
 
-const cardData = [
-    {
-        title: 'Building Your First Website',
-        description:
-            'Learn how to create a responsive website using HTML, CSS, and JavaScript.',
-        owner: 'Emily Davis',
-    },
-    {
-        title: 'Getting Started with Python',
-        description:
-            'A beginner-friendly introduction to Python programming with practical examples.',
-        owner: 'Liam Nguyen',
-    },
-    {
-        title: 'Understanding Cloud Computing',
-        description:
-            'Discover the basics of cloud services and how businesses use them to scale.',
-        owner: 'Sophia Kim',
-    },
-    {
-        title: 'Mastering Data Visualization',
-        description:
-            'Visualize complex data using modern libraries like D3.js and Chart.js.',
-        owner: 'Jackson Miller',
-    },
-    {
-        title: 'Cybersecurity Essentials',
-        description:
-            'Learn the fundamental practices to protect digital assets and stay safe online.',
-        owner: 'Olivia Martinez',
-    },
-]
 
 export default function MyFlashCards() {
+    const [loading, setLoading] = useState(true)
+    const { userId } = useContext(ContainerContextUserID)
+    const [cardData, setCardData] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true)
+            try {
+                const response = await fetch(
+                    `${API}/api/cover/myflashcard/${userId}`,
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                )
+                if (response.ok) {
+                    const result = await response.json()
+                    console.log('My Flashcards data:', result)
+                    setCardData(result.records)
+                } else {
+                    console.error(
+                        'Failed to fetch My Flashcards data:',
+                        response.statusText
+                    )
+                }
+            } catch (error) {
+                console.error('Error fetching My Flashcards data:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchData()
+    }, [])
+
     return (
-        <div className="w-full flex flex-col gap-10">
-            <Searchbar />
-            <Container
-                title="Science Cards"
-                icon="fa-solid fa-flask-vial"
-                icon_color="text-[#F5C45E]"
-            >
-                {/* <i class="fa-solid fa-flask-vial"></i> */}
-                <CardList
-                    cardData={cardData}
-                    icon="fa-solid fa-flask-vial"
-                    icon_color="text-[#F5C45E]"
-                    type="list"
-                />
-            </Container>
-            <Container title="Computer Cards" icon="fa-solid fa-computer">
-                {/* <i class="fa-solid fa-computer"></i> */}
-                <CardList
-                    icon="fa-solid fa-computer"
-                    cardData={cardData}
-                    type="list"
-                />
-            </Container>
-            <Container
-                title="Science Cards"
-                icon="fa-solid fa-flask-vial"
-                icon_color="text-[#F5C45E]"
-            >
-                {/* <i class="fa-solid fa-flask-vial"></i> */}
-                <CardList
-                    cardData={cardData}
-                    icon="fa-solid fa-flask-vial"
-                    icon_color="text-[#F5C45E]"
-                />
-            </Container>
-        </div>
+        <>
+            {loading ? (
+                <Loading />
+            ) : (
+                <div className="w-full flex flex-col gap-10">
+                    <Searchbar />
+                    <Container
+                        title="My Flashcards"
+                        icon="fa-solid fa-database"
+                        // <i class="fa-solid fa-database"></i>
+                        icon_color="text-[#F79B72]"
+                    >
+                        {/* <i class="fa-solid fa-flask-vial"></i> */}
+                        <CardList
+                            cardData={cardData}
+                            icon="fa-solid fa-flask-vial"
+                            icon_color="text-[#F79B72]"
+                            type="list"
+                        />
+                    </Container>
+                </div>
+            )}
+        </>
     )
 }

@@ -1,5 +1,5 @@
 // components/FlipCard.jsx
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const FlipCard = ({ front, back, flipOn = 'hover', type = 'slide' }) => {
     const [flipped, setFlipped] = useState(false)
@@ -47,7 +47,7 @@ const FlipCard = ({ front, back, flipOn = 'hover', type = 'slide' }) => {
                         flipOn == 'click'
                             ? '[transform:rotateY(180deg)]'
                             : '[transform:rotateX(180deg)]'
-                    } [backface-visibility:hidden]`}
+                    } [backface-visibility:hidden] ${set_style()}`}
                 >
                     {back}
                 </div>
