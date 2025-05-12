@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -20,11 +19,6 @@ const scrollToSection = (position) => {
 
 export default function MainPage() {
   const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
 
   return (
     <>
