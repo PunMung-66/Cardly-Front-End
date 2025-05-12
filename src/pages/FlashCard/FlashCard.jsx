@@ -197,11 +197,13 @@ export default function FlashCard() {
 
                                 {data.user_id == userId ? (
                                     <div className="w-full flex items-center justify-around  rounded-lg  bg-regal-blue shadow-md">
-                                        <i className=" w-full flex justify-center fa-solid fa-pen-to-square text-xl text-white p-4 hover:text-3xl  duration-100 cursor-pointer"
-                                         onClick={() => handleEdit()}
+                                        <i
+                                            className=" w-full flex justify-center fa-solid fa-pen-to-square text-xl text-white p-4 hover:text-3xl  duration-100 cursor-pointer"
+                                            onClick={() => handleEdit()}
                                         ></i>
                                         <div className="w-[4px] h-10 bg-white rounded-lg lg:w-[7px]"></div>
-                                        <i className=" w-full flex justify-center fa-solid fa-trash text-xl text-white p-4 hover:text-3xl duration-100 cursor-pointer"
+                                        <i
+                                            className=" w-full flex justify-center fa-solid fa-trash text-xl text-white p-4 hover:text-3xl duration-100 cursor-pointer"
                                             onClick={() => handleDelete()}
                                         ></i>
                                     </div>
@@ -213,7 +215,7 @@ export default function FlashCard() {
                                     <i className="fa-solid fa-star text-yellow-500 md:text-3xl flex items-center justify-center gap-3 pr-4 border-r-4">
                                         <p className=" font-poppins font-semibold text-regal-blue">
                                             {data.rating_avg
-                                                ? data.rating_avg
+                                                ? data.rating_avg.toFixed(1)
                                                 : 0}
                                         </p>
                                     </i>
