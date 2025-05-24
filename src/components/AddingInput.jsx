@@ -18,7 +18,7 @@ export default function AddingInput({
             <div className="flex flex-col items-center justify-center gap-6 w-full  p-7">
                 <div className="w-full flex flex-col items-start justify-center">
                 {/* Enter question */}
-                    <input
+                    <textarea
                         type="text"
                         name="question"
                         value={question}
@@ -35,7 +35,7 @@ export default function AddingInput({
                 </div>
                 <div className="w-full flex flex-col items-start justify-center">
                 {/* Enter answer */}
-                    <input
+                    <textarea
                         type="text"
                         name="answer"
                         value={answer}
@@ -51,7 +51,7 @@ export default function AddingInput({
                     </p>
                 </div>
                 <div className="w-full flex flex-col items-start justify-center">
-                    <input
+                    <textarea
                         type="text"
                         name="hint"
                         value={hint}
